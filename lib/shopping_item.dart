@@ -6,7 +6,7 @@ import './zen_state.dart';
 import 'package:redux/redux.dart';
 import './view_model.dart';
 
-class ShoppingItemVM extends ViewModel {
+class ShoppingItemVM<ZenState, CartItem> extends ViewModel {
   ShoppingItemVM(Store<ZenState> s, CartItem vm) : super(s, vm);
 }
 
@@ -26,7 +26,7 @@ class ShoppingItemState extends State<ShoppingItem> {
   @override
   Widget build(BuildContext context) {
     print("rebuild ShoppingItem");
-    return StoreConnector<ZenState, ShoppingItemVM>(
+    return StoreConnector<ZenState, ShoppingItemVM<ZenState, CartItem>>(
       converter: (store) =>
           ShoppingItemVM(store, store.state.cartItems[widget.index]),
       builder: (context, cartItemVM) {

@@ -1,6 +1,6 @@
 import 'package:redux/redux.dart';
 
-abstract class ViewModel<S, VM> {
+class ViewModel<S, VM> {
   Store<S> _store;
   VM _vm;
 
