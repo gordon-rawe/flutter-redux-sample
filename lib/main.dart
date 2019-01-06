@@ -4,11 +4,12 @@ import 'package:flutter_shoppingcart/redux/reducers.dart';
 import 'package:flutter_shoppingcart/shooping_cart.dart';
 import 'package:redux_dev_tools/redux_dev_tools.dart';
 import './zen_state.dart';
+import 'dispatcher.dart';
 
 void main() {
-  final store = new DevToolsStore<ZenState>(cartItemsReducer,
-      initialState: ZenState());
-
+  final store =
+      new DevToolsStore<ZenState>(cartItemsReducer, initialState: ZenState());
+  Dispatcher.maintain(store);
   runApp(new ShoppingApp(store));
 }
 
