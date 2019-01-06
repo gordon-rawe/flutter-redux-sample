@@ -4,6 +4,11 @@ import 'package:flutter_shoppingcart/model/cart_item.dart';
 import 'package:flutter_shoppingcart/redux/action.dart';
 import './zen_state.dart';
 import 'package:redux/redux.dart';
+import './view_model.dart';
+
+class AddItemDialogVM extends ViewModel {
+  AddItemDialogVM(Store<ZenState> store) : super(store, null /**不需要数据可以传递 */);
+}
 
 class AddItemDialog extends StatefulWidget {
   @override
@@ -13,15 +18,13 @@ class AddItemDialog extends StatefulWidget {
 }
 
 class AddItemDialogState extends State<AddItemDialog> {
-  Store<ZenState> _store;
-
   TextEditingController _textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector<ZenState, Store<ZenState>>(
-      converter: (store) => _store = store,
-      builder: (context, callback) => new AlertDialog(
+    return new StoreConnector<ZenState, AddItemDialogVM>(
+      converter: (store) => AddItemDialogVM(store),
+      builder: (context, pageVM) => new AlertDialog(
             title: Text('Add Item'),
             contentPadding: const EdgeInsets.all(16.0),
             content: new Row(
@@ -46,7 +49,7 @@ class AddItemDialogState extends State<AddItemDialog> {
                   child: new Text("Cancel")),
               new FlatButton(
                   onPressed: () {
-                    _store.dispatch(AddItemAction(CartItem(
+                    pageVM.dispatch(AddItemAction(CartItem(
                         name: _textEditingController.text, checked: false)));
                     Navigator.pop(context);
                   },
