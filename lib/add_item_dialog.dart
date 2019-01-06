@@ -17,7 +17,8 @@ class AddItemDialog extends StatefulWidget {
   }
 }
 
-class AddItemDialogState extends State<AddItemDialog> {
+class AddItemDialogState extends State<AddItemDialog> {//这里因为需要dispatch，所以可以不要VM，直接缓存store也行
+
   TextEditingController _textEditingController = TextEditingController();
 
   @override
