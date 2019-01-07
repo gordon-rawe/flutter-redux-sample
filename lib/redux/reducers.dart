@@ -14,13 +14,13 @@ ZenState cartItemsReducer(ZenState state, dynamic action) {
 }
 
 ZenState addItem(ZenState state, AddItemAction action) {
-  state.cartItems = state.cartItems..add(action.item); //先浅拷贝然后再增加
+  state.cartItems = state.cartItems..add(action.item)..toList(); //先浅拷贝然后再增加
   return state;
 }
 
 ZenState deleteItem(ZenState state, DeleteItemAction action) {
   state.cartItems.removeWhere((oneItem) => oneItem == action.item);
-  state.cartItems = state.cartItems; //用于浅拷贝
+  state.cartItems = state.cartItems.toList(); //用于浅拷贝
   return state;
 }
 
