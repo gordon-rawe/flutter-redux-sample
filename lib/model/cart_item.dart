@@ -10,4 +10,11 @@ class CartItem {
   String toString() {
     return "$name : $checked";
   }
+
+  @override
+  int get hashCode => name.hashCode ^ checked.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      identical(this, other) && name == other.name && checked == other.checked;
 }

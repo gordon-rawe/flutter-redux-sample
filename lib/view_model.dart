@@ -1,5 +1,6 @@
 import 'package:redux/redux.dart';
 
+@Deprecated("使用不好可能会造成性能问题")
 class ViewModel<S, VM> {
   Store<S> _store;
   VM _vm;
@@ -13,4 +14,10 @@ class ViewModel<S, VM> {
   VM getData() {
     return _vm;
   }
+
+  // @override
+  // int get hashCode => _vm.hashCode;
+
+  // @override
+  // operator == (other) => other._vm == _vm;
 }

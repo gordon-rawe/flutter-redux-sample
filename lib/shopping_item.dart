@@ -3,12 +3,13 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_shoppingcart/model/cart_item.dart';
 import 'package:flutter_shoppingcart/redux/action.dart';
 import './zen_state.dart';
-import 'package:redux/redux.dart';
-import './view_model.dart';
+// import 'package:redux/redux.dart';
+// import './view_model.dart';
+import './dispatcher.dart';
 
-class ShoppingItemVM<ZenState, CartItem> extends ViewModel {
-  ShoppingItemVM(Store<ZenState> s, CartItem vm) : super(s, vm);
-}
+// class ShoppingItemVM<ZenState, CartItem> extends ViewModel {
+//   ShoppingItemVM(Store<ZenState> s, CartItem vm) : super(s, vm);
+// }
 
 class ShoppingItem extends StatefulWidget {
   final int index;
@@ -17,7 +18,7 @@ class ShoppingItem extends StatefulWidget {
 
   @override
   ShoppingItemState createState() {
-    print("ShoppingItemState=---->");
+    print("rebuild state");
     return ShoppingItemState();
   }
 }
@@ -25,27 +26,28 @@ class ShoppingItem extends StatefulWidget {
 class ShoppingItemState extends State<ShoppingItem> {
   @override
   Widget build(BuildContext context) {
-    print("rebuild ShoppingItem");
-    return StoreConnector<ZenState, ShoppingItemVM<ZenState, CartItem>>(
-      converter: (store) =>
-          ShoppingItemVM(store, store.state.cartItems[widget.index]),
+    print("rebuild ShoppingItem -----> ${widget.hashCode} $this");
+    return StoreConnector<ZenState, CartItem>(
+      distinct: true,
+      onWillChange: (data) {
+        print("ShoppingItemState onWillChange ----> ${data.name}");
+      },
+      converter: (store) => store.state.cartItems[widget.index],
       builder: (context, cartItemVM) {
         return Dismissible(
           onDismissed: (_) {
-            cartItemVM.dispatch(DeleteItemAction(cartItemVM.getData()));
+            Dispatcher.dispatch(DeleteItemAction(cartItemVM));
           },
           child: ListTile(
             title: TextField(),
             // subtitle: TextField(),
             leading: Checkbox(
-                value: cartItemVM.getData().checked,
+                value: cartItemVM.checked,
                 onChanged: (newValue) {
-                  print(this);
-                  cartItemVM
-                      .dispatch(ToggleStateItemAction(cartItemVM.getData()));
+                  Dispatcher.dispatch(ToggleStateItemAction(cartItemVM));
                 }),
           ),
-          key: Key(cartItemVM.getData().name),
+          key: Key(cartItemVM.name),
         );
       },
     );
