@@ -28,11 +28,9 @@ ZenState toggleState(ZenState state, ToggleStateItemAction action) {
   // CartItem actionItem = action.item;
   // actionItem.checked = !actionItem.checked;
   // return state;
-  print("a ${state.cartItems.hashCode}");
   CartItem actionItem = action.item;
   CartItem newItem =
       CartItem(name: actionItem.name, checked: !actionItem.checked);
-  print("b ${state.cartItems.hashCode}");
   state.cartItems[state.cartItems.indexOf(actionItem)] = newItem;
   return state;
 }

@@ -11,7 +11,7 @@ class ShoppingList extends StatelessWidget {
     return StoreConnector<ZenState, List<CartItem>>(
       distinct: true,
       onWillChange: (data) {
-        print("ShoppingList onWillChange ----> $data");
+        print("ShoppingList onWillChange ----> $data $hashCode");
       },
       converter: (store) => store.state.cartItems,
       builder: (context, listVM) => ListView.builder(

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_shoppingcart/redux/reducers.dart';
 import 'package:flutter_shoppingcart/shooping_cart.dart';
-import 'package:redux_dev_tools/redux_dev_tools.dart';
+import 'package:redux/redux.dart';
 import './zen_state.dart';
 import 'dispatcher.dart';
 
 void main() {
   final store =
-      new DevToolsStore<ZenState>(cartItemsReducer, initialState: ZenState());
+      Store<ZenState>(cartItemsReducer, initialState: ZenState(), distinct: false);
   Dispatcher.maintain(store);
   runApp(new ShoppingApp(store));
 }
 
 class ShoppingApp extends StatelessWidget {
-  final DevToolsStore<ZenState> store;
+  final Store<ZenState> store;
 
   ShoppingApp(this.store);
 

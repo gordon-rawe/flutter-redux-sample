@@ -18,7 +18,6 @@ class ShoppingItem extends StatefulWidget {
 
   @override
   ShoppingItemState createState() {
-    print("rebuild state");
     return ShoppingItemState();
   }
 }
@@ -42,6 +41,7 @@ class ShoppingItemState extends State<ShoppingItem> {
             title: TextField(),
             // subtitle: TextField(),
             leading: Checkbox(
+              key: GlobalKey(),
                 value: cartItemVM.checked,
                 onChanged: (newValue) {
                   Dispatcher.dispatch(ToggleStateItemAction(cartItemVM));
