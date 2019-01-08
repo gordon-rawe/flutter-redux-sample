@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_shoppingcart/model/cart_item.dart';
-import 'package:flutter_shoppingcart/shopping_item.dart';
-import 'zen_state.dart';
+import 'package:flutter_shoppingcart/models/cart_item.dart';
+import './shopping_item.dart';
+import '../zen_state.dart';
 
 class ShoppingList extends StatelessWidget {
   @override

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_shoppingcart/model/cart_item.dart';
-import 'package:flutter_shoppingcart/redux/action.dart';
-import './zen_state.dart';
+import 'package:flutter_shoppingcart/models/cart_item.dart';
+import 'package:flutter_shoppingcart/reducers/action.dart';
+import '../zen_state.dart';
 // import 'package:redux/redux.dart';
 // import './view_model.dart';
-import './dispatcher.dart';
+import '../framework/dispatcher.dart';
 
 // class ShoppingItemVM<ZenState, CartItem> extends ViewModel {
 //   ShoppingItemVM(Store<ZenState> s, CartItem vm) : super(s, vm);

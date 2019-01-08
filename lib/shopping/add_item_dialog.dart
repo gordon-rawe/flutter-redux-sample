@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shoppingcart/model/cart_item.dart';
-import 'package:flutter_shoppingcart/redux/action.dart';
+import 'package:flutter_shoppingcart/models/cart_item.dart';
+import 'package:flutter_shoppingcart/reducers/action.dart';
 // import './zen_state.dart';
 // import 'package:redux/redux.dart';
 // import './view_model.dart';
-import 'dispatcher.dart';
+import '../framework/dispatcher.dart';
 
 // class AddItemDialogVM extends ViewModel { 
 //   AddItemDialogVM(Store<ZenState> store) : super(store, null /**不需要数据可以传递 or StoreBuilder*/);

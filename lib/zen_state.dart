@@ -1,4 +1,4 @@
-import './model/cart_item.dart';
+import './models/cart_item.dart';
 
 class ZenState {
   int pageView = 0;

@@ -1,4 +1,4 @@
-import 'package:flutter_shoppingcart/model/cart_item.dart';
+import 'package:flutter_shoppingcart/models/cart_item.dart';
 
 class AddItemAction {
   final CartItem item;

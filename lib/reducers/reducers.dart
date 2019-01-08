@@ -1,5 +1,5 @@
-import 'package:flutter_shoppingcart/model/cart_item.dart';
-import 'package:flutter_shoppingcart/redux/action.dart';
+import 'package:flutter_shoppingcart/models/cart_item.dart';
+import 'package:flutter_shoppingcart/reducers/action.dart';
 import '../zen_state.dart';
 
 ZenState cartItemsReducer(ZenState state, dynamic action) {
